@@ -25,7 +25,7 @@
 import abc
 
 from pyalgotrade import broker
-import tickFillStrategy
+from cnx.broker import tickFillStrategy
 from pyalgotrade import logger
 import pyalgotrade.bar
 

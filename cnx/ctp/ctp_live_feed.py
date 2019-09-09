@@ -68,7 +68,7 @@ class CtpLiveFeed(BarEventListener):
                                                                                                 'bv2': data.bidVolume2, 'bv3': data.bidVolume3, 'bv4': data.bidVolume4, 'bv5': data.bidVolume5})
         with self._lock:
             self._bars[data.instrumentID] = tick
-            print data.instrumentID == 'cu1707'
+            print(data.instrumentID == 'cu1707')
             print("{0} acquire the lock.".format(threading.currentThread().getName()))
 
 
@@ -107,7 +107,7 @@ class CtpMdThread(threading.Thread):
             print("处理代码")
             bar = bars.get('cu1707')
             if bar:
-                print bar.getHigh()
+                print(bar.getHigh())
 
     def getNextCallDateTime(self):
         self.__nextCallDatetime += self.__CTP_INQUERY_PERIOD

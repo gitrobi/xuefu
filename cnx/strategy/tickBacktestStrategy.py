@@ -12,7 +12,7 @@ import pyalgotrade.broker
 from pyalgotrade.broker import backtesting
 from pyalgotrade import observer
 from pyalgotrade import dispatcher
-import quant.cnx.strategy.tickPosition
+import cnx.strategy.tickPosition
 from pyalgotrade import logger
 from pyalgotrade.barfeed import resampled
 from pyalgotrade.strategy import BaseStrategy
@@ -63,7 +63,7 @@ class BacktestingStrategy(BaseStrategy):
         :rtype: The :class:`pyalgotrade.strategy.position.Position` entered.
         """
 
-        return quant.cnx.strategy.tickPosition.LongPosition(self, instrument, None, None, quantity, goodTillCanceled, allOrNone,onOpposite)
+        return cnx.strategy.tickPosition.LongPosition(self, instrument, None, None, quantity, goodTillCanceled, allOrNone,onOpposite)
 
     def enterShort(self, instrument, quantity, goodTillCanceled=False, allOrNone=False,onOpposite=False):
         """Generates a sell short :class:`pyalgotrade.broker.MarketOrder` to enter a short position.
@@ -79,7 +79,7 @@ class BacktestingStrategy(BaseStrategy):
         :rtype: The :class:`pyalgotrade.strategy.position.Position` entered.
         """
 
-        return quant.cnx.strategy.tickPosition.ShortPosition(self, instrument, None, None, quantity, goodTillCanceled, allOrNone,onOpposite)
+        return cnx.strategy.tickPosition.ShortPosition(self, instrument, None, None, quantity, goodTillCanceled, allOrNone,onOpposite)
 
     def marketOrder(self, instrument, quantity, onOpposite=False, goodTillCanceled=False, allOrNone=False):
         """Submits a market order.
