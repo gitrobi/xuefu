@@ -59,7 +59,7 @@ class ENE_backtest(strategy.BacktestingStrategy):
         # print "日線",bars.getDateTime(),self.__MA10[-1],self.__MA11[-1]     #当分钟线走到 16号的时候，其ma10[-1]是15号的，也就是日线仍走到15号，但其15号的数据日线收盘价等数据全都有
         # self.eneLastData =
         if 1 > 2:
-            print type(bars), type(self.getFeed()[self.__instrument])
+            print(type(bars), type(self.getFeed()[self.__instrument]))
 
     def onEnterOk(self, position):
         execInfo = position.getEntryOrder().getExecutionInfo()

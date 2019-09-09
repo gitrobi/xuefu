@@ -188,7 +188,7 @@ class CtpTrading(BarEventListener):
                                                               data.askPrice1, data.bidPrice1,data.askVolume1, data.bidVolume1))
 
         self.update_dataSeries(data)
-        print 'the current data is',self.__apDataSeries[instrument][-1],self.__bpDataSeries[instrument][-1]
+        print('the current data is',self.__apDataSeries[instrument][-1],self.__bpDataSeries[instrument][-1])
         pass
 
 if __name__ == "__main__":

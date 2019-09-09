@@ -10,7 +10,7 @@ from matplotlib.pyplot import plot
 from pyalgotrade import plotter
 from pyalgotrade.stratanalyzer import returns
 
-import pandasDemo_run as pdr
+import demo.backtest.pandasDemo_run as pdr
 from cnx import pyalg_utils, dataFramefeed
 
 

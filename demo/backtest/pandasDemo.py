@@ -11,7 +11,7 @@ from matplotlib.pyplot import plot
 from pyalgotrade import plotter
 from pyalgotrade.stratanalyzer import returns
 
-import pandasDemo_run as pdr
+import demo.backtest.pandasDemo_run as pdr
 from cnx import pyalg_utils, dataFramefeed
 
 
@@ -27,7 +27,7 @@ def turtle_test(loadtype='tushare', dataString='pyalg'):
         dat.index.name = 'date'
     else:
         dat = pd.read_csv("../../api/stock/csv/600848.csv", index_col=0, encoding='gbk')
-        print dat.head()
+        print(dat.head())
     feed = dataFramefeed.Feed()
     feed.addBarsFromDataFrame("orcl", dat)
     myStrategy = pdr.turtle(feed, "orcl", 20, 10)

@@ -46,7 +46,7 @@ class tickDemo_run(strategy.BacktestingStrategy):
     def onBars(self, bars):
         # If a position was not opened, check if we should enter a long position.
         bar = bars[self.__instrument]
-        print bar.getDateTime(), bar.getBp(), bar.getAp(), self.__sma[-1]
+        print(bar.getDateTime(), bar.getBp(), bar.getAp(), self.__sma[-1])
 
 
 def tickStrategy(plot=True):
@@ -62,7 +62,7 @@ def tickStrategy(plot=True):
     # tickfeed.set_datetime_format('%Y-%m-%d %H:%M:%S.%f')  #可通过该选项设置数据index列的时间格式
     tickfeed.addBarsFromDataFrame("orcl", dat)
 
-    print 'load time :', time.time() - a
+    print('load time :', time.time() - a)
     strat = strat(tickfeed, 'orcl', 5)
     strat.run()
 

@@ -11,7 +11,7 @@ import sys
 sys.path.append("..")
 
 import pandas as pd
-import minuWithDayDemo_run as mdd
+import demo.backtest.minuWithDayDemo_run as mdd
 from cnx import pyalg_utils
 from cnx import dataFramefeed
 
@@ -73,8 +73,8 @@ def ENE(type='old', code='600281'):
     myStrategy.run()
     plt.plot()
 
-    print u'最大回撤：\t%f\t 交易笔数：\t%d\t 盈利笔数：\t%d\n' % (ds.getMaxDrawDown(), ds.getCount(), ds.getProfitableCount())
-    print u'累计收益：\t%f\t 夏普比率：\t%f\t' % (returnsAnalyzer.getCumulativeReturns()[-1], ds.getSharpeRatio())
+    print(u'最大回撤：\t%f\t 交易笔数：\t%d\t 盈利笔数：\t%d\n' % (ds.getMaxDrawDown(), ds.getCount(), ds.getProfitableCount()))
+    print(u'累计收益：\t%f\t 夏普比率：\t%f\t' % (returnsAnalyzer.getCumulativeReturns()[-1], ds.getSharpeRatio()))
 
 
 if __name__ == '__main__':

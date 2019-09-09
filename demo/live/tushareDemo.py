@@ -42,7 +42,7 @@ class LiveDemo_run(strategy.BaseStrategy):
     def onBars(self, bars):
         # If a position was not opened, check if we should enter a long position.
         bar = bars[self.__instruments[0]]
-        print bar.getDateTime(), bar.getClose(), self.__sma[-1]
+        print(bar.getDateTime(), bar.getClose(), self.__sma[-1])
 
     
     

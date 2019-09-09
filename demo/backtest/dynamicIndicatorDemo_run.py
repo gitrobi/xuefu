@@ -53,7 +53,7 @@ class bolling_backtest(strategy.BacktestingStrategy):
 
     def resample_callback(self, some_number, bars):
         if 1 > 2:
-            print type(bars), type(self.getFeed()[self.__instrument])
+            print(type(bars), type(self.getFeed()[self.__instrument]))
 
     def onEnterOk(self, position):
         execInfo = position.getEntryOrder().getExecutionInfo()
@@ -93,7 +93,7 @@ class bolling_backtest(strategy.BacktestingStrategy):
                 pass
             elif price < self.LOWER[-1]:
                 self.buyWaitSignal = True
-                print bar.getDateTime(), '--------buy wait'
+                print(bar.getDateTime(), '--------buy wait')
         elif self.buyWaitSignal and self.checkMinCondition() == 'UP':
             self.buyWaitSignal = False
             return True
@@ -108,10 +108,10 @@ class bolling_backtest(strategy.BacktestingStrategy):
 
         if not self.sellWaitSignal:   #check sellwait
             if bar.getDateTime().strftime('%Y-%m-%d') == '2016-09-07':
-                print bar.getDateTime(),'---',price,'---',self.UPPER[-1]
+                print(bar.getDateTime(),'---',price,'---',self.UPPER[-1])
             if price > self.UPPER[-1]:
                 self.sellWaitSignal = True
-                print bar.getDateTime(),'--------sell wait'
+                print(bar.getDateTime(),'--------sell wait')
 
         elif self.sellWaitSignal and self.checkMinCondition() == 'DOWN':
             self.sellWaitSignal = False
@@ -148,7 +148,7 @@ class bolling_backtest(strategy.BacktestingStrategy):
                 if (bar.getDateTime() - self.holdDay) < timedelta(days=1):  # 持有期大于一天
                     pass
                 else:
-                    print 'position is not none,---exit market'
+                    print('position is not none,---exit market')
                     self.__position.exitMarket()
             return
 
