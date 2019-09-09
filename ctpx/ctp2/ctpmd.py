@@ -3,7 +3,7 @@ import time
 import platform
 import os
 
-from util import logger_factory
+from utils import logger_factory
 logger = logger_factory.getLogger(__name__)
 
 if platform.architecture()[1] == "ELF":

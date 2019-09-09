@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time,os
 import platform
-from util import logger_factory
+from utils import logger_factory
 
 logger = logger_factory.getLogger(__name__)
 
