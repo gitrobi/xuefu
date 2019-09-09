@@ -25,8 +25,10 @@ from pyalgotrade import barfeed, utils
 from pyalgotrade import dataseries
 from pyalgotrade.utils import dt
 
-import bar
-import tickfeed
+from cnx import bar
+from cnx import tickfeed
+
+import operator
 
 
 # Interface for csv row parsers.
@@ -133,7 +135,7 @@ class BarFeed(barfeed.BaseBarFeed):
         self.__nextPos.setdefault(instrument, 0)
         # Add and sort the bars
         self.__bars[instrument].extend(bars)
-        barCmp = lambda x, y: cmp(x.getDateTime(), y.getDateTime())
+        barCmp = lambda x, y: operator.lt(x.getDateTime(), y.getDateTime())
         self.__bars[instrument].sort(barCmp)
 
         self.registerInstrument(instrument)
@@ -249,7 +251,7 @@ class TickFeed(tickfeed.BaseBarFeed):
         self.__nextPos.setdefault(instrument, 0)
         # Add and sort the bars
         self.__bars[instrument].extend(bars)
-        barCmp = lambda x, y: cmp(x.getDateTime(), y.getDateTime())
+        barCmp = lambda x, y: operator.lt(x.getDateTime(), y.getDateTime())
         self.__bars[instrument].sort(barCmp)
 
         self.registerInstrument(instrument)

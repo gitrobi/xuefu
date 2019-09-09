@@ -25,8 +25,8 @@ import abc
 from pyalgotrade import feed
 from pyalgotrade import dispatchprio
 
-import bar
-import tickds
+from cnx import bar
+from cnx import tickds
 
 
 

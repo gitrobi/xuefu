@@ -17,4 +17,4 @@ def getAbsolutePath(relativePath):
     return path
 
 if __name__ =='__main__':
-    print getAbsolutePath('../../api/stock/a.csv')
+    print(getAbsolutePath('../../api/stock/a.csv'))

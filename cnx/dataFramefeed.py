@@ -24,8 +24,8 @@ from pyalgotrade.barfeed import common
 from pyalgotrade.utils import dt
 from pyalgotrade import dataseries
 
-import dataFrameBarfeed
-import bar
+from cnx import dataFrameBarfeed
+from cnx import bar
 
 
 ######################################################################
@@ -114,7 +114,8 @@ class RowParser(dataFrameBarfeed.RowParser):
         pass
     #row的结构 row[0]为时间，string类型。row[1]为Series类型:'open'\high\close\low\volume\amoun或price——change等，前面6项和tushare 对应  
     def parseBar(self, row):
-        if isinstance(row[0],str) or isinstance(row[0],unicode) :
+        #if isinstance(row[0],str) or isinstance(row[0],unicode) :   #Robi
+        if isinstance(row[0], str):
             if len(row[0].strip())==19:
                 dateTime = parse_date19(row[0]) #date
             elif len(row[0].strip())==16:  #tushare～～～～16位数据

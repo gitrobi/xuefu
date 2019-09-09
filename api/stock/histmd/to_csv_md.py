@@ -5,7 +5,7 @@ Created on Tue Jul 28 11:04:32 2015
 @author: xuefu
 """
 from itertools import izip
-from quant import constant as ct
+import constant as ct
 import pylab as plt
 import pandas as pd
 import tushare as ts
@@ -30,7 +30,7 @@ def save_data():
     i = 0
     for code in dat['code'].values:
         i += 1
-        print i, code
+        print(i, code)
         try:
             _data_ = ts.get_hist_data(code, end=ct._MIDDLE_)  # 默认取3年，code为str，start无效的,start 和end若当天有数据则全都取
             if _data_ is not None:
@@ -53,7 +53,7 @@ def refresh_data(_start_='2015-08-01', _end_=ct._TODAY_):
     i = 0
     for code in dat['code'].values:
         i += 1
-        print i, code
+        print(i, code)
         try:
             _data_ = ts.get_hist_data(str(code), start=_start_, end=_end_)  # 默认取3年，start 8-1包括
             filename = dirs + '%s.csv' % code
@@ -79,7 +79,7 @@ def read_data():
     i = 0
     for code in dat['code'].values:
         i += 1
-        print i, code
+        print(i, code)
         try:
             df = pd.read_csv(dirs + '%s.csv' % code, index_col=0, parse_dates=[0], dtype={'code': str},
                              encoding='gbk')  # parse_dates直接转换数据类型，不用再重新狗再累
@@ -158,7 +158,7 @@ def temp2():
     i = 0
     for code in dat['code'].values:
         i += 1
-        print i, code
+        print(i, code)
         try:
             _data_ = pd.read_csv(dirs + '%s.csv' % code, index_col=0, dtype={'code': str}, parse_dates=[0],
                                  encoding='gbk')  # 默认取3年，code为str，start无效的,start 和end若当天有数据则全都取
@@ -205,7 +205,7 @@ def change_type_to_yahoo():
     i = 0
     for code in inuse['code'].values:
         i += 1
-        print i, code
+        print(i, code)
         _data_ = pd.read_csv(dirs + '%s.csv' % code, index_col=0, parse_dates=[0], encoding='gbk')  # 默认取3年，start 8-1包括
         _data_ = _data_.rename(columns=re_columns)
         _data_.index.name = 'Date'
@@ -220,7 +220,7 @@ def get_beta(values1, values2):
     return results.params[0]
     value1 = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
     value2 = [1.75, 2.45, 3.81, 4.80, 7.00, 8.60]
-    print get_beta(value1, value2)
+    print(get_beta(value1, value2))
 
 
 # 选择下跌行情中天量成交和高换手率，后期加入小盘股等指标，scope 为近15日
@@ -240,7 +240,7 @@ def bigVolume(scope=15, v_times=5, t_percent=20):
                 if i < 5:
                     _data_['close'].plot()
                 rs_list.append(code)
-                print i, code
+                print(i, code)
         except IOError:
             pass  # 不行的话还是continue
 

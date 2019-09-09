@@ -309,4 +309,4 @@ if __name__ == '__main__':
     import tushare as ts
     a =ts.get_k_data('600848')
 
-    print CCI(a).tail()
+    print(CCI(a).tail())

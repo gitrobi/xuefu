@@ -121,10 +121,10 @@ def kdj(param=[14, 3, 0, 3, 0, 70, 30]):
 
     # slowk,slowd = talib.STOCH(dat.high.values,dat.low.values,dat.close.values,14,3,0,3,0)
     # print slowk[-1],slowd[-1]
-    print u'drawndown：\t%f\t tradingCount：\t%d\t profitCount：\t%d\n' % (
-    ds.getMaxDrawDown(), ds.getCount(), ds.getProfitableCount())
-    print u'culmutiveReturn：\t%f\t sharpRatio：\t%f\t' % (
-    returnsAnalyzer.getCumulativeReturns()[-1], ds.getSharpeRatio())
+    print(u'drawndown：\t%f\t tradingCount：\t%d\t profitCount：\t%d\n' % (
+    ds.getMaxDrawDown(), ds.getCount(), ds.getProfitableCount()))
+    print(u'culmutiveReturn：\t%f\t sharpRatio：\t%f\t' % (
+    returnsAnalyzer.getCumulativeReturns()[-1], ds.getSharpeRatio()))
 
 
 if __name__ == '__main__':

@@ -6,11 +6,11 @@ from utils import logger_factory
 logger = logger_factory.getLogger(__name__)
 
 if platform.architecture()[1] == "ELF":
-    from ctp.linux import ctptd as td
+    from api.ctpx.ctp.linux import ctptd as td
 elif platform.architecture()[0] == "64bit":
-    from ctp.win64 import ctptd as td
+    from api.ctpx.ctp.win64 import ctptd as td
 else:
-    from ctp.win32 import ctptd as td
+    from api.ctpx.ctp.win32 import ctptd as td
 
 path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tdconn/')
 logger.debug(path)

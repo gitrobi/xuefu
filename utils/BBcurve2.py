@@ -12,7 +12,7 @@ import scipy.stats as ss
 
 
 def getShData():
-    dat = pd.read_csv("../../api/stock/csv/000001.csv",encoding='gbk', parse_dates=[0], index_col=0)
+    dat = pd.read_csv("../api/stock/csv/000001.csv",encoding='gbk', parse_dates=[0], index_col=0)
     dat = dat.fillna(method='pad')
     dat['Adj Close'] = dat['close']
     dat.index.name = 'date'
@@ -29,13 +29,15 @@ def getShData():
     return dat
 
 
-def BBcurve(data=getShData()[2000:2330], T=5, n=20, alpha=0.4, resample=False,plot=True):
+def BBcurve(data=None, T=5, n=20, alpha=0.4, resample=False,plot=True):
     """
     T = 5                        # 采样的间隔交易日
     n = 20                       # 采样点数
     alpha = 0.4                  # 落入牛熊价格区间的置信度为(1-alpha)
     resample =true means as T to calulate the line else calculate everyday
     """
+    data = getShData()
+
     a = ss.t.ppf(1 - alpha / 2, n)  # (1-alpha)置信度对应的区间上限
 
     close = data.close
@@ -89,8 +91,8 @@ def BBcurve(data=getShData()[2000:2330], T=5, n=20, alpha=0.4, resample=False,pl
     plt.figure(figsize=(16, 8))
     plt.plot(t, close[t], 'k', label="$CLOSE$", linewidth=1)
     plt.plot(bb.index.values, bb.bull.values, color='r', label="$Bull$",
-             linewidth=2)  # the first one is n*T+T,and the bull_c is for n*T+T
-    plt.plot(bb.index.values, bb.bear.values, color='g', label="$Bear$", linewidth=2)
+             linewidth=1)  # the first one is n*T+T,and the bull_c is for n*T+T
+    plt.plot(bb.index.values, bb.bear.values, color='g', label="$Bear$", linewidth=1)
     # plt.plot(bb.index.values, bb.means.values, color='g', label="$BB$", linewidth=2)
     plt.title("Bull and Bear")
     plt.legend()
@@ -100,6 +102,13 @@ def BBcurve(data=getShData()[2000:2330], T=5, n=20, alpha=0.4, resample=False,pl
     return bb
 
 
+def down_data():
+    import tushare as ts
+    dat = ts.get_k_data("000001", start='2009-09-01', end='2019-09-08', index=True)
+    dat.to_csv("000001.csv",encoding='gbk',index=False)
+
+
 if __name__ == '__main__':
     # pd.read_csv('000002.csv')
     BBcurve(resample=False)
+    #down_data()

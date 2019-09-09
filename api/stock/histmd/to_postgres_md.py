@@ -5,7 +5,7 @@ Created on Tue Jul 28 11:04:32 2015
 @author: lenovo
 """
 
-from quant import constant as ct
+import constant as ct
 import pylab as plt
 import pandas as pd
 import tushare as ts
@@ -47,7 +47,7 @@ def set_h_data(start = ct._START_,middle = ct._MIDDLE_,autype="qfq",index=False,
         for _end_ in _time_:
             _end_ = _end_.strftime('%Y-%m-%d')
             
-            print i,code,_end_
+            print(i,code,_end_)
             try:
                 _data_ = ts.get_h_data(code,start=_start_,end=_end_,index=index,autype=autype,retry_count=retry_count,pause=pause) #两个日期之间的前复权数据 
                 #_iterables_ = [[code],_data_.index] #无奈，选择multi——index，且需重新构造
@@ -56,8 +56,8 @@ def set_h_data(start = ct._START_,middle = ct._MIDDLE_,autype="qfq",index=False,
                 if _data_ is not None:                    
                     _data_['code'] =code
                     _data_.to_sql('h_data',engine,if_exists='append')
-            except Exception,e:
-                print e.args[0]
+            except Exception as e:
+                print(e.args[0])
                 pass    #不行的话还是continue           
             _start_ = _end_
             
@@ -90,14 +90,14 @@ def set_hist_data(start = None,end = None,ktype = None,retry_count = 3,pause=0):
     for key_item in ktype:
         i+= 1
         for code in dat: 
-            print i,code,key_item
+            print(i,code,key_item)
             try:
                 _data_ = ts.get_hist_data(code,start=start,end=end,ktype=key_item,retry_count=retry_count,pause=pause) #两个日期之间的前复权数据 
                 if _data_ is not None:                    
                     _data_['code'] =code
                     _data_.to_sql('hist_data_%s'%key_item,engine,if_exists='append')
-            except Exception,e:
-                print e.args[0]
+            except Exception as e:
+                print(e.args[0])
                 pass    #不行的话还是continue          
 
 def get_hist_data(code,ktype="D"):
@@ -145,7 +145,7 @@ def set_realtime_quotes(code=['sh'],pause = 10):
     return _data_
         
     
-print get_hist_data('600051')     
+print(get_hist_data('600051'))
  
 def set_stock_basics():
     """

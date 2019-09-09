@@ -11,7 +11,9 @@ from pyalgotrade import plotter
 from pyalgotrade.barfeed import yahoofeed
 from pyalgotrade.stratanalyzer import returns
 
-import pandasDemo_run as pdr
+#import pandasDemo_run as pdr
+from demo.backtest import pandasDemo_run as pdr
+
 from cnx import pyalg_utils
 
 
