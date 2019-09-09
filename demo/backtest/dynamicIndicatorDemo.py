@@ -39,10 +39,11 @@ def bolling(code='600281'):
         dat.index = dat['Date Time']
         dat.index.name = 'date'
     except:
-        from api.stock.lib import gm_api as gm
-        dat = gm.gm_api().get_hist_data(code, '2015-01-01', ktype='5')
-        print dat
-        dat['Adj Close'] = dat['close']
+        #from api.stock.lib import gm_api as gm
+        #dat = gm.gm_api().get_hist_data(code, '2015-01-01', ktype='5')
+        #print(dat)
+        #dat['Adj Close'] = dat['close']
+        pass
 
     # dat = dat.ix[17000:18000,:]
     feed = dataFramefeed.Feed(frequency=bar.Frequency.MINUTE)
