@@ -21,7 +21,8 @@
 .. moduleauthor:: Gabriel Martin Becedillas Ruiz <gabriel.becedillas@gmail.com>
 """
 
-import Queue
+
+from queue import Queue
 import datetime
 import threading
 import time
@@ -33,7 +34,7 @@ from pyalgotrade import resamplebase
 from pyalgotrade.barfeed import membf
 from pyalgotrade.utils import dt
 
-from quant.cnx.lib import dataFramefeed, bar
+from cnx import dataFramefeed, bar
 
 logger = pyalgotrade.logger.getLogger("tushare")
 
@@ -67,7 +68,7 @@ class PollingThread(threading.Thread):
             if not self.__stopped:
                 try:
                     self.doCall()
-                except Exception, e:
+                except Exception as e:
                     logger.critical("Unhandled exception", exc_info=e)
         logger.debug("Thread finished.")
 
@@ -241,5 +242,5 @@ if __name__ == '__main__':
     while not liveFeed.eof():
         bars = liveFeed.getNextBars()
         if bars is not None:
-            print bars['600848'].getHigh(), bars['600848'].getDateTime(),type(bars['600848'].getVolume())
+            print(bars['600848'].getHigh(), bars['600848'].getDateTime(),type(bars['600848'].getVolume()))
             # test/
